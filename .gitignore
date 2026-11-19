@@ -1,0 +1,18 @@
+# Never commit patient-level data, predictions, model weights or credentials
+data/
+outputs/
+runs/
+checkpoints/
+adapters/
+*.safetensors
+*.bin
+*.pt
+*.pkl
+*.joblib
+*.parquet
+*.xlsx
+.env
+*.key
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

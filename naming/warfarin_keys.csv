@@ -1,0 +1,18 @@
+position,csv_column,original_key,descriptive_key,identifier_key
+1,Gender,Gender,Gender,V1
+2,Age,Age,Age,V2
+3,Height,Height,Height,V3
+4,Weight,Weight,Weight,V4
+5,Systolic blood pressure,Systolic blood pressure,Systolic blood pressure,V5
+6,Diastolic blood pressure,Diastolic blood pressure,Diastolic blood pressure,V6
+7,Renal disease,Renal disease,Renal disease,V7
+8,Aldosterone antagonist,Aldosterone antagonist,Aldosterone antagonist,V8
+9,Amiodarone,Amiodarone,Amiodarone,V9
+10,Aspirin,Aspirin,Aspirin,V10
+11,Diuretic loop,Diuretic loop,Diuretic loop,V11
+12,Lipid lowering agents,Lipid lowering agents,Lipid lowering agents,V12
+13,Nitrate,Nitrate,Nitrate,V13
+14,Tramadol,Tramadol,Tramadol,V14
+15,INR,INR,INR,V15
+16,Hemoglobin,Hemoglobin,Hemoglobin,V16
+17,Platelet,Platelet,Platelet,V17

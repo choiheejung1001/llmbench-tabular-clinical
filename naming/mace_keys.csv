@@ -1,0 +1,35 @@
+position,csv_column,original_key,descriptive_key,identifier_key
+1,Duration of hospitalization,Duration of hospitalization,Duration of hospitalization,V1
+2,Age,Age,Age,V2
+3,CABG,CABG,CABG,V3
+4,CAG+PTCA(balloon 1vessel),CAG+PTCA(balloon 1vessel),CAG+PTCA(balloon 1vessel),V4
+5,Successful,Successful,Successful,V5
+6,Weight,Weight,Weight,V6
+7,Systolic blood pressure,Systolic blood pressure,Systolic blood pressure,V7
+8,Diastolic blood pressure,Diastolic blood pressure,Diastolic blood pressure,V8
+9,Pulse rate,Pulse rate,Pulse rate,V9
+10,AST (SGOT),AST (SGOT),AST (SGOT),V10
+11,Apolipoprotein A1,Apolipoprotein A1,Apolipoprotein A1,V11
+12,BNP,BNP,BNP,V12
+13,BUN,BUN,BUN,V13
+14,CK,CK,CK,V14
+15,Chloride,Chloride,Chloride,V15
+16,Cholesterol,Cholesterol,Cholesterol,V16
+17,Creatinine,Creatinine,Creatinine,V17
+18,Hb,Hb,Hb,V18
+19,Homocysteine,Homocysteine,Homocysteine,V19
+20,Lp(a),Lp(a),Lp(a),V20
+21,PT(%),PT(%),PT(%),V21
+22,Platelet,Platelet,Platelet,V22
+23,Potassium,Potassium,Potassium,V23
+24,Triglyceride,Triglyceride,Triglyceride,V24
+25,Troponin-I,Troponin-I,Troponin-I,V25
+26,activated PTT,activated PTT,activated PTT,V26
+27,eGFR(MDRD),eGFR(MDRD),eGFR(MDRD),V27
+28,hsCRP,hsCRP,hsCRP,V28
+29,LV_EDV,LV_EDV,Left ventricular end-diastolic volume,V29
+30,LVIDs,LVIDs,Left ventricular internal dimension at end-systole,V30
+31,mv_EA,mv_EA,Mitral inflow E/A ratio,V31
+32,LV mass index,LV mass index,Left ventricular mass index,V32
+33,mv_DTI S septal,mv_DTI S septal,Septal mitral annular systolic velocity (tissue Doppler imaging),V33
+34,LVEF,LVEF,Left ventricular ejection fraction,V34

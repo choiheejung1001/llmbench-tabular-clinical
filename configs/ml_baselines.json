@@ -1,0 +1,41 @@
+{
+  "_about": "ML baselines = models of the original studies refitted with their ORIGINAL settings (no retuning), training seed 3407, one fixed set of predictions per baseline. Read by scripts/ml_baselines.py. The baseline compared with every LLM seed is chosen on the validation split (warfarin: lowest MAE of the 0.5-mg-rounded prediction; MACE and mortality: highest AUROC); ties -> the first model in 'models' order. The test split is never used for selection.",
+  "seed": 3407,
+  "warfarin": {
+    "metric": "MAE",
+    "features": "configs/tasks.json warfarin.ml_features (17 columns; cleaning rules applied; missing: NaN for XGBoost, -1 for the other models)",
+    "postprocessing": "prediction rounded to the nearest 0.5 mg",
+    "models": ["XGBoost", "ANN", "RandomForest", "LinearRegression"],
+    "settings": {
+      "XGBoost": {"n_estimators": 100, "objective": "reg:squaredlogerror", "learning_rate": 0.1, "max_depth": 2, "alpha": 0.1, "min_child_weight": 10, "min_split_loss": 0},
+      "ANN": {"activation": "identity", "hidden_layer_sizes": [600, 400, 300, 300], "learning_rate_init": 0.01, "max_iter": 300, "solver": "sgd", "batch_size": 16, "early_stopping": true, "note": "inputs MinMax-scaled (scaler fitted on the training split)"},
+      "RandomForest": {"max_depth": 5, "max_features": null, "max_leaf_nodes": 9, "max_samples": 0.7, "min_impurity_decrease": 0.0005, "min_samples_leaf": 4, "min_samples_split": 5, "n_estimators": 400, "oob_score": true, "warm_start": true, "min_weight_fraction_leaf": 0.4},
+      "LinearRegression": {}
+    }
+  },
+  "mace": {
+    "metric": "AUROC",
+    "features": "all key-map columns (numeric); original-study preprocessing: no imputation, one missing-value indicator per feature that has missing values in the training split, missing set to 0, no scaling",
+    "models": ["LightGBM", "LogisticRegression", "RandomForest", "FNN"],
+    "settings": {
+      "LightGBM": {"objective": "binary", "boosting_type": "gbdt", "n_estimators": 150, "num_leaves": 15, "max_depth": -1, "learning_rate": 0.025, "min_child_samples": 90},
+      "LogisticRegression": {"solver": "liblinear", "max_iter": 100},
+      "RandomForest": {"n_estimators": 100, "max_depth": 10},
+      "FNN": {"hidden": [64, 64], "activation": "relu", "dropout": 0.5, "optimizer": "Adam", "learning_rate": 0.0002, "beta_1": 0.5, "beta_2": 0.999, "batch_size": 64, "epochs": 40, "loss": "binary_crossentropy", "note": "TensorFlow/Keras, op determinism on"}
+    }
+  },
+  "mortality": {
+    "metric": "AUROC",
+    "representations": {"TE": "all categorical columns target-encoded (fitted on the training split) then mean-imputed",
+                        "Structured": "chrom and chrom1 replaced by 13 binary flags each (llmbench/karyotype.py); the other categorical columns target-encoded, then mean-imputed"},
+    "selection_representation": "TE",
+    "models": ["CatBoost", "RandomForest", "MLP", "LogisticRegression", "AdaBoost"],
+    "settings": {
+      "CatBoost": {"learning_rate": 0.01, "n_estimators": 1000, "min_data_in_leaf": 5, "max_depth": 5, "posterior_sampling": true, "eval_metric": "AUC", "note": "second target encoding of the encoded matrix (as in the original code)"},
+      "RandomForest": {"n_estimators": 50, "min_samples_split": 4, "min_samples_leaf": 2, "criterion": "entropy"},
+      "MLP": {"hidden_layer_sizes": [300, 300], "activation": "relu", "solver": "adam", "batch_size": 64, "learning_rate_init": 0.01, "learning_rate": "adaptive", "validation_fraction": 0.25, "early_stopping": true, "n_iter_no_change": 50, "max_iter": 10000},
+      "LogisticRegression": {"C": 1.0, "max_iter": 300},
+      "AdaBoost": {"n_estimators": 50, "learning_rate": 0.1, "algorithm": "SAMME.R", "note": "SAMME.R re-implemented (removed from scikit-learn 1.6); decision stumps"}
+    }
+  }
+}

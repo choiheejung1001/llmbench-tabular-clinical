@@ -1,0 +1,51 @@
+position,csv_column,original_key,descriptive_key,identifier_key
+1,age_at_hct,Age,Age,V1
+2,dx,dx,Recipient disease,V2
+3,dxtext,dxtext,Diagnosis and disease,V3
+4,stbmt,stbmt,Disease risk,V4
+5,emdx,emdx,Extramedullary disease at diagnosis,V5
+6,em1,em1,Extramedullary disease at hematopoietic cell transplantation,V6
+7,chrom,chrom,Karyotype at diagnosis,V7
+8,chrom1,chrom1,Karyotype at hematopoietic cell transplantation,V8
+9,cmvg,cmvg,CMV serostatus of recipient,V9
+10,ci_liver,ci_liver,Hepatic score of HCT-CI,V10
+11,ci_total,ci_total,Total score of HCT-CI,V11
+12,chtcondit,chtcondit,Conditioning regimen,V12
+13,typebmt1,typebmt1,Donor type,V13
+14,abcdr_s,abcdr_s,Number of HLA-A/B/C/DR mismatched loci,V14
+15,dr_s,dr_s,Number of HLA-DR mismatched loci,V15
+16,abdr_m,abdr_m,abdr_m,V16
+17,ab_m,ab_m,ab_m,V17
+18,abc_m,abc_m,abc_m,V18
+19,dcmvg,dcmvg,CMV serostatus of donor,V19
+20,a1_r,a1_r,HLA-A of recipient (first allele),V20
+21,a2_r,a2_r,HLA-A of recipient (second allele),V21
+22,b1_r,b1_r,HLA-B of recipient (first allele),V22
+23,b2_r,b2_r,HLA-B of recipient (second allele),V23
+24,c1_r,c1_r,HLA-C of recipient (first allele),V24
+25,c2_r,c2_r,HLA-C of recipient (second allele),V25
+26,dr1_r,dr1_r,HLA-DR of recipient (first allele),V26
+27,b1_d,b1_d,HLA-B of donor (first allele),V27
+28,b2_d,b2_d,HLA-B of donor (second allele),V28
+29,c1_d,c1_d,HLA-C of donor (first allele),V29
+30,c2_d,c2_d,HLA-C of donor (second allele),V30
+31,dr2_d,dr2_d,HLA-DR of donor (second allele),V31
+32,a1_rm,a1_rm,HLA-A of recipient (first allele; molecular typing),V32
+33,b1_rm,b1_rm,HLA-B of recipient (first allele; molecular typing),V33
+34,b2_rm,b2_rm,HLA-B of recipient (second allele; molecular typing),V34
+35,c2_rm,c2_rm,HLA-C of recipient (second allele; molecular typing),V35
+36,dr1_rm,dr1_rm,HLA-DR of recipient (first allele; molecular typing),V36
+37,dr2_rm,dr2_rm,HLA-DR of recipient (second allele; molecular typing),V37
+38,dq1_rm,dq1_rm,HLA-DQ of recipient (first allele; molecular typing),V38
+39,dq2_rm,dq2_rm,HLA-DQ of recipient (second allele; molecular typing),V39
+40,a2_dm,a2_dm,HLA-A of donor (second allele; molecular typing),V40
+41,b1_dm,b1_dm,HLA-B of donor (first allele; molecular typing),V41
+42,c1_dm,c1_dm,HLA-C of donor (first allele; molecular typing),V42
+43,dr1_dm,dr1_dm,HLA-DR of donor (first allele; molecular typing),V43
+44,dr2_dm,dr2_dm,HLA-DR of donor (second allele; molecular typing),V44
+45,dqb1_dm,dqb1_dm,HLA-DQ of donor (first allele; molecular typing),V45
+46,dqb2_dm,dqb2_dm,HLA-DQ of donor (second allele; molecular typing),V46
+47,height,height,height,V47
+48,wbcdx,wbcdx,WBC count at diagnosis,V48
+49,tfrbcbmt,tfrbcbmt,RBC transfusion before hematopoietic cell transplantation,V49
+50,tfpltbmt,tfpltbmt,Platelet transfusion before hematopoietic cell transplantation,V50

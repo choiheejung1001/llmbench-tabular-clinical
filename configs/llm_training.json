@@ -1,0 +1,80 @@
+{
+  "_about": "LoRA fine-tuning and inference settings used for every LLM run. Read by scripts/train_llm.py, scripts/infer_llm.py and scripts/select_lora.py.",
+  "models": {
+    "qwen2.5-3B":  {"base": "unsloth/Qwen2.5-3B-Instruct-bnb-4bit"},
+    "qwen2.5-7B":  {"base": "unsloth/Qwen2.5-7B-Instruct-bnb-4bit"},
+    "qwen2.5-14B": {"base": "unsloth/Qwen2.5-14B-Instruct-bnb-4bit"},
+    "llama3.1-8B": {"base": "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit"}
+  },
+  "base_model_resolution": "If the environment variable LLM_BASE_DIR is set, <LLM_BASE_DIR>/<basename of 'base'> is used (local 4-bit checkpoints); otherwise the Hugging Face id in 'base'.",
+  "prompt_template": "Alpaca: 'Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.\\n\\n### Instruction:\\n{instruction}\\n\\n### Input:\\n{input}\\n\\n### Response:\\n{output}'; the tokenizer EOS token is appended to every training text.",
+  "common_training": {
+    "framework": "Unsloth FastLanguageModel + TRL SFTTrainer",
+    "base_precision": "4-bit (bitsandbytes) base, fp16 compute",
+    "lora_dropout": 0,
+    "lora_bias": "none",
+    "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+    "use_rslora": false,
+    "gradient_checkpointing": "unsloth",
+    "epochs": 3,
+    "per_device_train_batch_size": 2,
+    "gradient_accumulation_steps": 4,
+    "learning_rate": 0.0002,
+    "lr_scheduler_type": "linear",
+    "warmup_steps": 5,
+    "optimizer": "adamw_8bit",
+    "weight_decay": 0.01,
+    "fp16": true,
+    "packing": false,
+    "logging_steps": 10,
+    "checkpoint_used": "last epoch (the validation split is not used for early stopping)",
+    "seed_usage": "the run seed is passed both to get_peft_model(random_state=seed) and TrainingArguments(seed=seed)"
+  },
+  "max_seq_length": {
+    "warfarin":  {"original": 384, "identifier": 384},
+    "mace":      {"original": 512, "descriptive": 512, "identifier": 512},
+    "mortality": {"original": 1024, "descriptive": 1280, "identifier": 1024}
+  },
+  "inference": {
+    "adapter_loading": "4-bit base + LoRA adapter (not merged)",
+    "classification": "label log-probability scoring: for each label, sum of log P(label tokens | prompt) by teacher forcing; softmax over the labels gives the class probabilities; predicted class = argmax (equivalent to probability >= 0.5 for two labels)",
+    "regression": "greedy decoding: do_sample=False, repetition_penalty=1.0, temperature/top_p/top_k unset, max_new_tokens=8; the text after '### Response:' is parsed for the first number (regex [-+]?\\d*\\.?\\d+); parse failure = missing",
+    "regression_candidate_scoring": "supplementary: log P(candidate + EOS | prompt) for every distinct training target string; argmax candidate and probability-weighted expected dose (softmax over the candidate set)",
+    "regression_linear_probe": "supplementary: last-prompt-token final-layer hidden state of the fine-tuned generative adapter -> ridge regression (alpha chosen on validation MAE)"
+  },
+  "lora_search": {
+    "seed": 3407,
+    "fit_on": "training split only",
+    "candidates": {
+      "warfarin":  {"primary": [32, 64], "others": [[8, 16], [16, 32], [64, 128], [32, 32], [32, 128]], "metric": "validation MAE (greedy decoding)", "direction": "min"},
+      "mace":      {"primary": [16, 32], "others": [[8, 16], [32, 64], [64, 128], [16, 16], [16, 64]], "metric": "validation AUROC", "direction": "max"},
+      "mortality": {"primary": [16, 32], "others": [[8, 16], [32, 64], [64, 128], [16, 16], [16, 64]], "metric": "validation AUROC", "direction": "max"}
+    },
+    "rule": "Rule A: for every task x model adopt the configuration with the best validation metric among the primary and the five candidates (pairs are [r, alpha]); if the best value equals the primary value within 1e-6 the primary is kept. The test split is never used for the selection. The paired bootstrap CI (simple, B=1000, seed 2026) of the validation gain is reported but does not gate adoption."
+  },
+  "seeds": [3407, 1, 2],
+  "adopted": {
+    "warfarin": {
+      "status": "final",
+      "qwen2.5-3B":  {"r": 32, "alpha": 128},
+      "qwen2.5-7B":  {"r": 32, "alpha": 64},
+      "llama3.1-8B": {"r": 32, "alpha": 32},
+      "qwen2.5-14B": {"r": 64, "alpha": 128}
+    },
+    "mace": {
+      "status": "final",
+      "qwen2.5-3B":  {"r": 16, "alpha": 64},
+      "qwen2.5-7B":  {"r": 32, "alpha": 64},
+      "llama3.1-8B": {"r": 8, "alpha": 16},
+      "qwen2.5-14B": {"r": 64, "alpha": 128}
+    },
+    "mortality": {
+      "status": "final",
+      "qwen2.5-3B":  {"r": 32, "alpha": 64},
+      "qwen2.5-7B":  {"r": 64, "alpha": 128},
+      "llama3.1-8B": {"r": 64, "alpha": 128},
+      "qwen2.5-14B": {"r": 64, "alpha": 128}
+    }
+  },
+  "primary_configuration_before_search": {"warfarin": {"r": 32, "alpha": 64}, "mace": {"r": 16, "alpha": 32}, "mortality": {"r": 16, "alpha": 32}}
+}

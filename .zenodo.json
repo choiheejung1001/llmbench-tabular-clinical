@@ -1,0 +1,79 @@
+{
+  "upload_type": "software",
+  "title": "Code for: Task-specific performance of locally fine-tuned large language models for tabular clinical prediction: a controlled comparison with machine-learning models",
+  "description": "Minimal code package for three tabular clinical prediction tasks (warfarin discharge dose regression; one-year major adverse cardiac events after myocardial infarction; five-year mortality after allogeneic hematopoietic cell transplantation): key-value serialization and instruction templates (including the field-name variants), Unsloth/LoRA fine-tuning and inference of four 4-bit open-weight LLMs (Qwen2.5-3B/7B/14B-Instruct, Llama-3.1-8B-Instruct) with the hyperparameter configuration, original-setting ML baselines (XGBoost, LightGBM, AdaBoost and the other original-study models; fixed seed, validation-based selection), the evaluation code (discrimination, calibration, recalibration, paired bootstrap, decision curves, operating thresholds), and data-free drawing code for forest plots, decision curves, reliability diagrams and confusion matrices. Example input files contain entirely synthetic patients. No patient-level data, predictions, adapters or model weights are included.",
+  "creators": [
+    {
+      "name": "Choi, Heejung",
+      "affiliation": "Department of Information Medicine, Asan Medical Center, Seoul, Republic of Korea"
+    },
+    {
+      "name": "Kim, Yunha",
+      "affiliation": "Department of Information Medicine, Asan Medical Center, Seoul, Republic of Korea"
+    },
+    {
+      "name": "Seo, Jiahn",
+      "affiliation": "Department of Information Medicine, Asan Medical Center, Seoul, Republic of Korea"
+    },
+    {
+      "name": "Kee, Gaeun",
+      "affiliation": "Department of Information Medicine, Asan Medical Center, Seoul, Republic of Korea"
+    },
+    {
+      "name": "Ko, Soyoung",
+      "affiliation": "Department of Information Medicine, Asan Medical Center, Seoul, Republic of Korea"
+    },
+    {
+      "name": "Jung, HyoJe",
+      "affiliation": "Department of Information Medicine, Asan Medical Center, Seoul, Republic of Korea"
+    },
+    {
+      "name": "Kim, Byeolhee",
+      "affiliation": "Department of Information Medicine, Asan Medical Center, Seoul, Republic of Korea"
+    },
+    {
+      "name": "Choi, Boeun",
+      "affiliation": "Department of Information Medicine, Asan Medical Center, Seoul, Republic of Korea"
+    },
+    {
+      "name": "Kim, Ha Yeon",
+      "affiliation": "Department of Information Medicine, Asan Medical Center, Seoul, Republic of Korea"
+    },
+    {
+      "name": "Park, Yoobin",
+      "affiliation": "Department of Information Medicine, Asan Medical Center, Seoul, Republic of Korea"
+    },
+    {
+      "name": "Yoon, Jihun",
+      "affiliation": "Department of Information Medicine, Asan Medical Center, Seoul, Republic of Korea"
+    },
+    {
+      "name": "Kim, Young-Hak",
+      "affiliation": "Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea"
+    },
+    {
+      "name": "Suh, Jungyo",
+      "affiliation": "Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea"
+    },
+    {
+      "name": "Jun, Tae Joon",
+      "affiliation": "Department of Information Medicine, Asan Medical Center, Seoul, Republic of Korea"
+    }
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "version": "3.0.0",
+  "language": "eng",
+  "keywords": [
+    "large language models",
+    "LoRA",
+    "fine-tuning",
+    "tabular data",
+    "clinical prediction",
+    "XGBoost",
+    "LightGBM",
+    "AdaBoost",
+    "decision curve analysis"
+  ],
+  "related_identifiers": []
+}

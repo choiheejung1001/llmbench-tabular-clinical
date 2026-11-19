@@ -1,0 +1,25 @@
+# Python 3.10. Versions = the environment used for the revision runs (only packages imported by this code).
+# --- LLM fine-tuning and inference (one CUDA GPU; runs used NVIDIA RTX 3090, 24 GB)
+torch==2.9.0
+transformers==4.57.3
+peft==0.18.0
+trl==0.24.0
+unsloth==2025.12.9
+unsloth_zoo==2025.12.7
+bitsandbytes==0.49.0
+accelerate==1.12.0
+datasets==4.3.0
+psutil==7.2.0
+# --- ML baselines, statistics and figures (CPU)
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+scikit-learn==1.6.1
+xgboost==3.0.0
+catboost==1.2.8
+lightgbm==4.6.0
+tensorflow==2.21.0      # MACE feed-forward network baseline
+keras==3.12.2
+matplotlib==3.10.1
+seaborn==0.13.2
+category_encoders==2.8.1

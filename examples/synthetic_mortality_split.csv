@@ -1,0 +1,4 @@
+patient_id,dx,dxtext,stbmt,emdx,em1,chrom,chrom1,cmvg,ci_liver,ci_total,chtcondit,typebmt1,abcdr_s,dr_s,abdr_m,ab_m,abc_m,dcmvg,a1_r,a2_r,b1_r,b2_r,c1_r,c2_r,dr1_r,b1_d,b2_d,c1_d,c2_d,dr2_d,a1_rm,b1_rm,b2_rm,c2_rm,dr1_rm,dr2_rm,dq1_rm,dq2_rm,a2_dm,b1_dm,c1_dm,dr1_dm,dr2_dm,dqb1_dm,dqb2_dm,height,wbcdx,tfrbcbmt,tfpltbmt,age_at_hct,event
+1,AML,AML CR1,1,0,0,karyotype text 1,karyotype text 2,1,0,2,BuFlu,2,0,0,0,0,0,1,2,24,15,51,3,14,4,15,51,3,14,15,201,1501,5101,1402,405,1501,401,602,2402,1501,303,405,1501,401,602,172.5,12.4,8,10,48,alive
+2,MDS,MDS RAEB-2,2,0,0,karyotype text 3,,1,1,4,FluMel,3,1,1,1,1,1,0,11,,35,,7,,9,35,40,7,,9,1101,3501,,702,901,,303,,,3501,702,901,,303,,158.0,3.1,22,30,63,dead
+3,ALL,ALL CR2,2,1,0,karyotype text 4,karyotype text 5,0,0,1,CyTBI,1,0,0,0,0,0,1,26,33,58,44,1,6,13,58,44,1,6,13,2601,5801,4403,602,1302,1301,604,603,3303,5801,102,1302,1301,604,603,,45.8,,12,29,dead
